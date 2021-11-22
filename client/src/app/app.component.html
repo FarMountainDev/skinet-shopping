@@ -1,1 +1,10 @@
-{{title}} - Let's Go Outside
+<app-nav-bar></app-nav-bar>
+
+<div class="container" style="margin-top: 140px; ">
+    <h2>Welcome to {{title}}</h2>
+    <ul>
+        <li class="list-unstyled" *ngFor="let product of products">
+            {{product.name}}
+        </li>
+    </ul>
+</div>
