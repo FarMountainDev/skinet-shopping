@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Core.Entities.Identity;
-using Infrastructure;
 using Infrastructure.Data;
 using Infrastructure.Identity;
 using Infrastructure.Identity.Migrations;
