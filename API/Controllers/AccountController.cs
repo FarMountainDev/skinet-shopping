@@ -44,7 +44,7 @@ namespace API.Controllers
             };
         }
 
-        [HttpGet("emailexists")]
+        [HttpGet("emailExists")]
         public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
         {
             return await _userManager.FindByEmailAsync(email) != null;
@@ -94,7 +94,7 @@ namespace API.Controllers
         {
             if (CheckEmailExistsAsync(registerDTO.Email).Result.Value)
             {
-                return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"Email address is in user."}});
+                return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"Email address is already in use."}});
             }
 
             var user = new AppUser
