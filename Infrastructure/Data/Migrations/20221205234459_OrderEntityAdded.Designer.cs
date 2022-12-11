@@ -3,14 +3,16 @@ using System;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20221205234459_OrderEntityAdded")]
+    partial class OrderEntityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +38,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DeliveryMethods");
+                    b.ToTable("DeliveryMethod");
                 });
 
             modelBuilder.Entity("Core.Entities.OrderAggregate.Order", b =>
@@ -51,8 +53,8 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int?>("DeliveryMethodId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("OrderDate")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTimeOffset>("OrderDate")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PaymentIntentId")
                         .HasColumnType("TEXT");
@@ -68,7 +70,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasIndex("DeliveryMethodId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("Core.Entities.OrderAggregate.OrderItem", b =>
@@ -90,7 +92,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
@@ -190,7 +192,7 @@ namespace Infrastructure.Data.Migrations
 
                             b1.HasKey("OrderId");
 
-                            b1.ToTable("Orders");
+                            b1.ToTable("Order");
 
                             b1.WithOwner()
                                 .HasForeignKey("OrderId");
@@ -208,7 +210,7 @@ namespace Infrastructure.Data.Migrations
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.OwnsOne("Core.Entities.OrderAggregate.ProductItemOrdered", "ItemOrdered", b1 =>
+                    b.OwnsOne("Core.Entities.OrderAggregate.ProductItemOrdered", "ItemOrderd", b1 =>
                         {
                             b1.Property<int>("OrderItemId")
                                 .HasColumnType("INTEGER");
@@ -224,13 +226,13 @@ namespace Infrastructure.Data.Migrations
 
                             b1.HasKey("OrderItemId");
 
-                            b1.ToTable("OrderItems");
+                            b1.ToTable("OrderItem");
 
                             b1.WithOwner()
                                 .HasForeignKey("OrderItemId");
                         });
 
-                    b.Navigation("ItemOrdered");
+                    b.Navigation("ItemOrderd");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
