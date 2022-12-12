@@ -4,7 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## DEV NOTES
 
-Run `$env:NODE_OPTIONS = "--openssl-legacy-provider"` inside client folder to allow `ng serve` to run.
+Run this in terminal at /client folder for `ERR_OSSL_EVP_UNSUPPORTED` error:
+`$env:NODE_OPTIONS="--openssl-legacy-provider"`
 
 ## Development server
 
