@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run this in terminal at /client folder for `ERR_OSSL_EVP_UNSUPPORTED` error:
 `$env:NODE_OPTIONS="--openssl-legacy-provider"`
 
-For testing stripe webhook locally run in powershell:
+For testing stripe webhook locally, run in powershell:
 `stripe listen -f https://localhost:5001/api/payments/webhook -e payment_intent.succeeded,payment_intent.payment_failed`
 
 ## Development server
