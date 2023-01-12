@@ -1,11 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using API.DTOs;
-using AutoMapper;
 using Core.Entities.OrderAggregate;
-using Microsoft.Extensions.Configuration;
 
 namespace API.Helpers
 {

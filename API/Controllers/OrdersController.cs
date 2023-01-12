@@ -1,15 +1,4 @@
-using Core.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Core.Entities.OrderAggregate;
-using API.DTOs;
-using AutoMapper;
-using System.Linq;
-using System.Security.Claims;
-using API.Extensions;
-using API.Errors;
-using System.Collections.Generic;
 
 namespace API.Controllers
 {

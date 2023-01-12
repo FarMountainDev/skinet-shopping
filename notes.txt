@@ -1,0 +1,10 @@
+TODO
+
+ - Shop Inventory
+ - OAuth
+ - Role-Based Authentication
+ - E-Mail Verification (with 'SendGrid'?)
+ - Admin Panel
+ - Campgrounds
+ - Reservations
+ - Product Reviews

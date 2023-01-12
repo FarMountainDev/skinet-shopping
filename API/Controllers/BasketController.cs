@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using AutoMapper;
-using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

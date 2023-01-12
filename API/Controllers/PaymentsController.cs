@@ -11,6 +11,7 @@ using System.IO;
 using Stripe;
 using Order = Core.Entities.OrderAggregate.Order;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 namespace API.Controllers
 {
@@ -18,12 +19,14 @@ namespace API.Controllers
     {
         private readonly IPaymentService _paymentService;
         public ILogger<IPaymentService> _logger { get; }
-        private const string WhSecret = "whsec_5f555cc5e54b201969c194c3767fe20776c40e9d932ada15e0778a8056908f6e";
+        private readonly string _whSecret;
 
-        public PaymentsController(IPaymentService paymentService, ILogger<IPaymentService> logger)
+        public PaymentsController(IPaymentService paymentService, ILogger<IPaymentService> logger,
+            IConfiguration config)
         {
             _logger = logger;
             _paymentService = paymentService;
+            _whSecret = config.GetSection("StripeSettings:WhSecret").Value;
         }
 
         [Authorize]
@@ -43,7 +46,7 @@ namespace API.Controllers
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
 
             var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"],
-                WhSecret);
+                _whSecret);
             
             PaymentIntent intent;
             Order order;
